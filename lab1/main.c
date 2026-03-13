@@ -15,8 +15,9 @@ node *createnode(char c){
     newnode->next = NULL;
     return newnode;
 }
+int tabcount = 0;
 node *findninsert(char c, node *head){
-    
+
     if(head == NULL){
         return createnode(c);
     }else{
@@ -24,10 +25,10 @@ node *findninsert(char c, node *head){
         node *prev = NULL;
         while(temp != NULL){
             
-            // if(temp->c == c){
-            //     temp->numofchar++;
-            //     return head;
-            // }
+            if(temp->c == c){
+                temp->numofchar++;
+                return head;
+            }
             prev = temp;
             temp = temp->next;
         }
@@ -39,15 +40,15 @@ node *findninsert(char c, node *head){
 
 void printll(node *head) {
     for (node *temp = head; temp != NULL ; temp = temp->next) {
-        char c = temp->c;
-        if(c == '\n'){
-            printf("\\n, ");
-        }else if(c == '\t') {
-            printf("\\t, ");
+        if(temp->c == '\n'){
+            printf("\\n : %d\n", temp->numofchar);
+        }else if(temp->c == ' ') {
+            printf("' ' : %d\n", temp->numofchar);
+        }else if(temp->c == '\t') {
+            printf("\\t : %d\n", temp->numofchar);
         }else{
-            printf("%c, ", c);
+            printf("%c  : %d\n", temp->c, temp->numofchar);
         }
-        
     }
 }
 
