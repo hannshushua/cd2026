@@ -68,10 +68,13 @@ int main() {
     
     fclose(file);
     
-    printll(head);
+    // printll(head);
     
     node *current = head;
     while (current != NULL) {
+        if(current->c == '\n'){
+            printf("\\n, ");
+        }else printf("%c, ", current->c);
         node *next = current->next;
         free(current);
         current = next;
